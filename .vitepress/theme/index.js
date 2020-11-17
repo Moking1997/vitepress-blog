@@ -1,10 +1,12 @@
 import DefaultTheme from "../theme-default"; // To extend default theme.
 import Docs from "./components/Docs.vue";
+import Tags from "./components/Tags.vue";
 
 export default {
   ...DefaultTheme,
   enhanceApp({ app, router, siteData }) {
     // 注册组件
+    app.component("Tags", Tags);
     app.component("Docs", Docs);
 
     // app is the Vue 3 app instance from createApp()

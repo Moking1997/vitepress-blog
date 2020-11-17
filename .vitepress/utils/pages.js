@@ -17,7 +17,7 @@ module.exports = async () => {
   const paths = await globby(["**.md"], {
     ignore: ["node_modules"],
   });
-  const pages = await Promise.all(
+  let pages = await Promise.all(
     paths.map(async (item) => {
       const content = await fs.readFile(item, "utf-8");
       const { data } = matter(content);
@@ -29,6 +29,8 @@ module.exports = async () => {
       };
     })
   );
+  pages = pages.filter((item) => !item.frontMatter.page);
+
   pages.sort(compareDate);
 
   return pages;

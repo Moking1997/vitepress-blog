@@ -30,11 +30,13 @@ async function getConfig() {
     enhanceAppFiles: path.resolve(__dirname, "./enhanceApp.ts"),
     //theme:'reform',
     themeConfig: {
+      search: true,
       pages: await getPages(),
       author: "足生",
       nav: [
         { text: "首页", link: "/" },
         { text: "归档", link: "/docs" },
+        { text: "分类", link: "/tags" },
       ],
     },
     dest: "public",
