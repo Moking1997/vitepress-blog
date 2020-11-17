@@ -41,6 +41,7 @@
         <template #bottom>
           <slot name="page-bottom" />
         </template>
+        <div id="gitalk-container"></div>
       </Page>
     </main>
   </div>
@@ -48,85 +49,92 @@
 </template>
 
 <script>
-import { ref, computed, watch } from 'vue'
-import NavBar from './components/NavBar.vue'
-import Home from './components/Home.vue'
-import ToggleSideBarButton from './components/ToggleSideBarButton.vue'
-import SideBar from './components/SideBar.vue'
-import Page from './components/Page.vue'
-import { useRoute, usePageData, useSiteData, useSiteDataByRoute } from 'vitepress'
+  import { ref, computed, watch } from "vue";
+  import NavBar from "./components/NavBar.vue";
+  import Home from "./components/Home.vue";
+  import ToggleSideBarButton from "./components/ToggleSideBarButton.vue";
+  import SideBar from "./components/SideBar.vue";
+  import Page from "./components/Page.vue";
+  import {
+    useRoute,
+    usePageData,
+    useSiteData,
+    useSiteDataByRoute,
+  } from "vitepress";
 
-export default {
-  components: {
-    Home,
-    NavBar,
-    ToggleSideBarButton,
-    SideBar,
-    Page
-  },
+  export default {
+    components: {
+      Home,
+      NavBar,
+      ToggleSideBarButton,
+      SideBar,
+      Page,
+    },
 
-  setup() {
-    const route = useRoute()
-    const pageData = usePageData()
-    const siteData = useSiteData()
-    const siteRouteData = useSiteDataByRoute()
+    setup() {
+      const route = useRoute();
+      const pageData = usePageData();
+      const siteData = useSiteData();
+      const siteRouteData = useSiteDataByRoute();
 
-    const openSideBar = ref(false)
-    const enableHome = computed(() => !!pageData.value.frontmatter.home)
+      const openSideBar = ref(false);
+      const enableHome = computed(() => !!pageData.value.frontmatter.home);
 
-    const showNavbar = computed(() => {
-      const { themeConfig } = siteRouteData.value
-      const { frontmatter } = pageData.value
-      if (
-        frontmatter.navbar === false
-        || themeConfig.navbar === false) {
-        return false
-      }
-      return (
-        siteData.value.title
-        || themeConfig.logo
-        || themeConfig.repo
-        || themeConfig.nav
-      )
-    })
+      const showNavbar = computed(() => {
+        const { themeConfig } = siteRouteData.value;
+        const { frontmatter } = pageData.value;
+        if (frontmatter.navbar === false || themeConfig.navbar === false) {
+          return false;
+        }
+        return (
+          siteData.value.title ||
+          themeConfig.logo ||
+          themeConfig.repo ||
+          themeConfig.nav
+        );
+      });
 
-    const showSidebar = computed(() => {
-      const { frontmatter } = pageData.value
-      const { themeConfig } = siteRouteData.value
-      return (
-        !frontmatter.home
-        && frontmatter.sidebar !== false
-        && ((typeof themeConfig.sidebar === 'object') && (Object.keys(themeConfig.sidebar).length != 0)
-        || (Array.isArray(themeConfig.sidebar) && themeConfig.sidebar.length != 0))
-      )
-    })
+      const showSidebar = computed(() => {
+        const { frontmatter } = pageData.value;
+        const { themeConfig } = siteRouteData.value;
+        return (
+          !frontmatter.home &&
+          frontmatter.sidebar !== false &&
+          ((typeof themeConfig.sidebar === "object" &&
+            Object.keys(themeConfig.sidebar).length != 0) ||
+            (Array.isArray(themeConfig.sidebar) &&
+              themeConfig.sidebar.length != 0))
+        );
+      });
 
-    const pageClasses = computed(() => {
-      return [{
-        'no-navbar': !showNavbar.value,
-        'sidebar-open': openSideBar.value,
-        'no-sidebar': !showSidebar.value
-      }]
-    })
+      const pageClasses = computed(() => {
+        return [
+          {
+            "no-navbar": !showNavbar.value,
+            "sidebar-open": openSideBar.value,
+            "no-sidebar": !showSidebar.value,
+          },
+        ];
+      });
 
-    const toggleSidebar = (to) => {
-      openSideBar.value = typeof to === 'boolean' ? to : !openSideBar.value
-    }
+      const toggleSidebar = (to) => {
+        openSideBar.value = typeof to === "boolean" ? to : !openSideBar.value;
+      };
 
-    const hideSidebar = toggleSidebar.bind(null, false)
-    // close the sidebar when navigating to a different location
-    watch(route, hideSidebar)
-    // TODO: route only changes when the pathname changes
-    // listening to hashchange does nothing because it's prevented in router
+      const hideSidebar = toggleSidebar.bind(null, false);
+      // close the sidebar when navigating to a different location
+      watch(route, hideSidebar);
+      // TODO: route only changes when the pathname changes
+      // listening to hashchange does nothing because it's prevented in router
 
-    return {
-      showNavbar,
-      showSidebar,
-      openSideBar,
-      pageClasses,
-      enableHome,
-      toggleSidebar
-    }
-  }
-}
+      return {
+        showNavbar,
+        showSidebar,
+        openSideBar,
+        pageClasses,
+        enableHome,
+        toggleSidebar,
+      };
+    },
+  };
 </script>
