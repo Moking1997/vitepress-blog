@@ -119,5 +119,17 @@
     color: #ccc;
     font-size: 1rem;
   }
+  @media screen and (max-width: 700px) {
+    .header {
+      font-size: 1.5rem;
+    }
+    .article {
+      padding: 2px;
+    }
+    .date,
+    .title {
+      font-size: 0.9rem;
+    }
+  }
 </style>
 >

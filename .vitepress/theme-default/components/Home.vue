@@ -94,4 +94,18 @@
   .article:hover .line {
     width: 5rem;
   }
+  @media screen and (max-width: 700px) {
+    .title {
+      font-size: 1.1rem;
+    }
+    .describe {
+      font-size: 14px;
+    }
+    .time {
+      font-size: 14px;
+    }
+    .line {
+      border-top: 0.15rem solid #353535;
+    }
+  }
 </style>
