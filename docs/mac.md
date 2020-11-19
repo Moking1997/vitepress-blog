@@ -5,7 +5,6 @@ tags:
   - Mac
   - 有用
 describe: 个人Mac电脑配置
-sidebar: true
 ---
 
 ## 常用软件
@@ -41,8 +40,6 @@ sidebar: true
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     ```
 
-### 开启终端代理
-
 ## 开启终端代理
 
 1. 测试终端是否翻墙: curl www.google.com
@@ -67,4 +64,4 @@ sidebar: true
 
 4. source ~/.zshrc
 
-### 开启终端代理
+<Comment/>

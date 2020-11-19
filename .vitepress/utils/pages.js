@@ -1,8 +1,6 @@
 const fs = require("mz/fs");
 const globby = require("globby");
 const matter = require("gray-matter");
-const currentdate = new Date();
-const nowDate = currentdate.getTime() + currentdate.getTimezoneOffset() * 60000;
 
 function rTime(date) {
   const json_date = new Date(date).toJSON();

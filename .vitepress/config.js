@@ -1,7 +1,5 @@
-const path = require("path");
 const getPages = require("./utils/pages");
 
-//const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
 async function getConfig() {
   const config = {
     head: [
@@ -15,24 +13,23 @@ async function getConfig() {
       ],
       ["meta", { name: "keywords", content: "足生的个人博客" }],
       ["link", { rel: "icon", href: "/favicon.ico" }],
+      // 引入 Gitalk
       [
         "link",
         { rel: "stylesheet", href: "https://unpkg.com/gitalk/dist/gitalk.css" },
       ],
       ["script", { src: "https://unpkg.com/gitalk/dist/gitalk.min.js" }],
+      // 今日诗词
+      [
+        "script",
+        { src: "https://sdk.jinrishici.com/v2/browser/jinrishici.js" },
+      ],
     ],
     title: "足生",
-    description: "足生的个人博客",
-    markdown: {
-      // 代码显示行号
-      lineNumbers: true,
-    },
-    enhanceAppFiles: path.resolve(__dirname, "./enhanceApp.ts"),
-    //theme:'reform',
     themeConfig: {
-      search: true,
       pages: await getPages(),
       author: "足生",
+      search: true,
       nav: [
         { text: "首页", link: "/" },
         { text: "归档", link: "/docs" },

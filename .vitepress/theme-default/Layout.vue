@@ -41,7 +41,6 @@
         <template #bottom>
           <slot name="page-bottom" />
         </template>
-        <div id="gitalk-container"></div>
       </Page>
     </main>
   </div>

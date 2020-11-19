@@ -1,6 +1,11 @@
 <template>
   <div class="content">
     <slot name="top" />
+    <div class="md-header">
+      <div class="md-title">{{ pageData.title }}</div>
+      <span id="jinrishici-sentence">正在加载今日诗词....</span>
+      <div class="md-date">{{ pageData.frontmatter.date }}</div>
+    </div>
     <ul class="catalog">
       <li class="catalog-item" v-for="item in pageData.headers">
         <a
@@ -64,6 +69,25 @@
   .content div > h1:first-child, .content div > h2:first-child {
     margin-top: 0;
   } */
+  .md-header {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .md-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #353535;
+  }
+  #jinrishici-sentence {
+    margin: 0.5rem 0 0.4rem;
+  }
+  .md-date {
+    font-size: 1rem;
+    font-style: italic;
+    color: #aaa;
+  }
   .catalog {
     border-left: 1px solid #ccc;
     position: fixed;
