@@ -19,11 +19,6 @@ async function getConfig() {
         { rel: "stylesheet", href: "https://unpkg.com/gitalk/dist/gitalk.css" },
       ],
       ["script", { src: "https://unpkg.com/gitalk/dist/gitalk.min.js" }],
-      // 今日诗词
-      [
-        "script",
-        { src: "https://sdk.jinrishici.com/v2/browser/jinrishici.js" },
-      ],
     ],
     title: "足生",
     themeConfig: {
