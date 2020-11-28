@@ -40,6 +40,8 @@ describe: 个人Mac电脑配置
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     ```
 
+### 开启终端代理
+
 ## 开启终端代理
 
 1. 测试终端是否翻墙: curl www.google.com

@@ -13,7 +13,6 @@
     </div>
     <div class="date">{{ article.frontMatter.date.slice(5) || "" }}</div>
   </a>
-  <div class="header">分类</div>
 
   <div class="tags">
     <span

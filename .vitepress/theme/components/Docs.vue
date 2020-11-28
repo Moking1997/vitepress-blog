@@ -1,7 +1,5 @@
 <template>
   <div class="">
-    <div class="header">归档</div>
-
     <div class="years" v-for="(year, index) in data">
       <div class="year">
         {{ year[0].frontMatter.date.split("-")[0] }}
