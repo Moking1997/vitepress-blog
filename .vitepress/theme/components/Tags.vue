@@ -64,6 +64,7 @@
     text-align: center;
   }
   .tags {
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -128,6 +129,12 @@
     .date,
     .title {
       font-size: 0.9rem;
+    }
+    .title{
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+      width: 18em;
     }
   }
 </style>

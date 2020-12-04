@@ -95,11 +95,23 @@
     width: 5rem;
   }
   @media screen and (max-width: 700px) {
+    .article{
+      padding: 1rem 0;
+    }
     .title {
       font-size: 1.1rem;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+      width: 14em;
     }
     .describe {
       font-size: 14px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      padding: 0 0.5em;
     }
     .time {
       font-size: 14px;
